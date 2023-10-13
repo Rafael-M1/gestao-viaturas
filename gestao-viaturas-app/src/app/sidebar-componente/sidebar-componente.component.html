@@ -1,0 +1,38 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">Sistema de Gestão de Viaturas</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+    >
+      <mat-nav-list>
+        <a href="/" style="height: 150px; display: flex; flex-direction: column">
+          <img src="./../../assets/IMG-Carro.svg" alt="Logo sistema" />
+          <h4 style="text-align: center; text-decoration: none; color: black;"><b>Gestão de Viaturas</b></h4>
+        </a>
+        <div style="">
+        </div>
+        <hr style="margin-top: 40px" />
+        <a
+          mat-list-item
+          [routerLink]="[nav.path]"
+          *ngFor="let nav of fillerNav"
+          >{{ nav.label }}</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

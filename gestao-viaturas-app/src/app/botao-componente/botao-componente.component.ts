@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,5 +11,6 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class BotaoComponenteComponent {
-
+  @Input() rotulo: string = "Botão";
+  @Input() color: string = "primary";
 }
