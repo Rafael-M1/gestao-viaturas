@@ -1,4 +1,10 @@
 <div style="height: 100%">
   <h2>Título da Página Viaturas</h2>
   <p>Conteudo da Página Viaturas</p>
+  <p *ngIf="parametro !== null">
+    Parâmetro recebido via rota: <b>{{parametro}}</b>
+  </p>
+  <div style="margin-top: 50px;">
+    <app-botao-componente #botao rotulo="Botão ViewChild" (click)="mudarCorDeFundo()"></app-botao-componente>
+  </div>
 </div>

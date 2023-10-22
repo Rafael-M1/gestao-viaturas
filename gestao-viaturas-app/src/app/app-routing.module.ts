@@ -13,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomepageComponent },
       { path: 'viaturas', component: ViaturasPageComponent },
+      { path: 'viaturas/:parametro', component: ViaturasPageComponent },
       { path: 'pessoas', component: PessoasPageComponent },
       { path: 'utilizacaoviaturas', component: UtilizacaoviaturasPageComponent },
     ],

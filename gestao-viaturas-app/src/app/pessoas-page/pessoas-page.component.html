@@ -1,6 +1,6 @@
 <div style="height: 100%">
   <h2>Título da Página Pessoas</h2>
   <p>Conteudo da Página Pessoas</p>
-  <app-botao-componente rotulo="Salvar"></app-botao-componente>
-  <app-botao-componente rotulo="Teste" color="secondary"></app-botao-componente>
+  <app-botao-componente rotulo="Salvar" (botaoClicado)="onClickBotaoSalvar()"></app-botao-componente>
+  <app-botao-componente rotulo="Teste" color="secondary" (botaoClicado)="onClickBotaoTeste()"></app-botao-componente>
 </div>

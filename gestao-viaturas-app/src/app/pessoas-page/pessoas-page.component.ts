@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { BotaoComponenteComponent } from "../botao-componente/botao-componente.component";
 
 @Component({
@@ -12,5 +12,17 @@ import { BotaoComponenteComponent } from "../botao-componente/botao-componente.c
     imports: [MatCardModule, MatButtonModule, RouterModule, BotaoComponenteComponent]
 })
 export class PessoasPageComponent {
+    constructor(private router: Router) {}
 
+    navegarParaViaturasPage(parametro: string) {
+        this.router.navigate(['/viaturas', parametro]);
+    }
+
+    onClickBotaoTeste() {
+        this.navegarParaViaturasPage("teste");
+    }
+
+    onClickBotaoSalvar() {
+        this.navegarParaViaturasPage("salvar");
+    }
 }
