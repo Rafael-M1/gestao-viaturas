@@ -1,10 +1,39 @@
-<div style="height: 100%">
-  <h2>Título da Página Viaturas</h2>
-  <p>Conteudo da Página Viaturas</p>
-  <p *ngIf="parametro !== null">
-    Parâmetro recebido via rota: <b>{{parametro}}</b>
-  </p>
-  <div style="margin-top: 50px;">
-    <app-botao-componente #botao rotulo="Botão ViewChild" (click)="mudarCorDeFundo()"></app-botao-componente>
+<div style="height: 100%; padding: 20px">
+  <h2>Viaturas</h2>
+  <div style="margin-top: 50px; display: flex; justify-content: flex-end">
+    <app-botao-componente
+      #botao
+      rotulo="Adicionar Viatura"
+      (click)="onClickAdicionar()"
+    ></app-botao-componente>
+  </div>
+
+  <table mat-table [dataSource]="viaturas" *ngIf="viaturas && viaturas!.length > 0">
+    <ng-container matColumnDef="placa">
+      <th mat-header-cell *matHeaderCellDef>Placa</th>
+      <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ano">
+      <th mat-header-cell *matHeaderCellDef>Ano</th>
+      <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
+    </ng-container>
+    <ng-container matColumnDef="marca">
+      <th mat-header-cell *matHeaderCellDef>Marca</th>
+      <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+    </ng-container>
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef>Modelo</th>
+      <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div *ngIf="!viaturas || viaturas!.length == 0">
+    <div class="row">
+      <div class="center-align">
+        <span class="col s12 flow-text">Não há viaturas cadastradas.</span>
+      </div>
+    </div>
   </div>
 </div>

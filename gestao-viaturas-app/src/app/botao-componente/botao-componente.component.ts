@@ -13,6 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
 export class BotaoComponenteComponent {
   @Input() rotulo: string = "Botão";
   @Input() color: string = "primary";
+  @Input() tipo: string = 'button';
+  @Input() desabilitado!: boolean;
   @Output() botaoClicado = new EventEmitter<void>();
 
   onClickBotao() {
