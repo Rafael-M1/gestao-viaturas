@@ -44,14 +44,23 @@ export class ViaturasFormPageComponent {
     modelo: '',
   };
 
-  constructor(private router: Router, private viaturaService: ViaturaService, private _snackBar: MatSnackBar) {}
+  constructor(
+    private router: Router,
+    private viaturaService: ViaturaService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   onClickSalvar() {
     this.viaturaService
       .postViaturaFetch(this.viatura)
-      .then((response) => this.openSnackBar(response));
-    this.router.navigate(['/viaturas']);
-    
+      .then((response) => {
+        this.openSnackBar(`Viatura ${response.placa} cadastrada com sucesso!`);
+        this.router.navigate(['/viaturas']);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.openSnackBar('Erro ao cadastrar viatura.');
+      });
   }
 
   onClickCancelar() {
@@ -68,8 +77,8 @@ export class ViaturasFormPageComponent {
     this.viatura.ano = novoValor;
   }
 
-  openSnackBar(viaturaResponse: Viatura) {
-    this._snackBar.open(`Viatura ${viaturaResponse.placa} cadastrada com sucesso!`, '', {
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: 4000,
