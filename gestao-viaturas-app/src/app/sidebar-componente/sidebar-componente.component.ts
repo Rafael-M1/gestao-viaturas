@@ -46,8 +46,10 @@ export class SidebarComponenteComponent implements OnDestroy {
     let corAtual = this.themeService.getCurrentTheme();
     if (corAtual == "") {
       this.themeService.setTheme("black");
+      localStorage.setItem("currentTheme", "black");
     } else {
       this.themeService.setTheme("");
+      localStorage.setItem("currentTheme", "");
     }
   }
 
