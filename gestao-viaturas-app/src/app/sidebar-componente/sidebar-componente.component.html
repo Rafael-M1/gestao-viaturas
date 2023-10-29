@@ -3,7 +3,10 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Sistema de Gestão de Viaturas</h1>
+    <div style="display: flex; width: 100%; justify-content: space-between;">
+      <h1 class="example-app-name">Sistema de Gestão de Viaturas</h1>
+      <app-botao-componente rotulo="Alterar tema" (botaoClicado)="onClickBotaoAlterarTema()"></app-botao-componente>
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container">
