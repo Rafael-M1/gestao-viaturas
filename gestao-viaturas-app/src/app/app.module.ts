@@ -14,6 +14,7 @@ import { PessoasPageComponent } from './pessoas-page/pessoas-page.component';
 import { UtilizacaoviaturasPageComponent } from './utilizacaoviaturas-page/utilizacaoviaturas-page.component';
 import { ViaturasFormPageComponent } from './viaturas-form-page/viaturas-form-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HomepageComponent],
@@ -32,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UtilizacaoviaturasPageComponent,
     ViaturasFormPageComponent,
     MatFormFieldModule,
+    HttpClientModule,
   ],
 })
 export class AppModule {}

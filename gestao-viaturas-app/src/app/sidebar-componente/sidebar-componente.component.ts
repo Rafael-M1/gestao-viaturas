@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BotaoComponenteComponent } from "../botao-componente/botao-componente.component";
-import { ThemeService } from '../theme.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
     selector: 'app-sidebar-componente',

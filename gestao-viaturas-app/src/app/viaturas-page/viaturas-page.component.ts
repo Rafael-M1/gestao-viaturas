@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BotaoComponenteComponent } from '../botao-componente/botao-componente.component';
 import { Viatura } from '../model/viatura';
-import { ViaturaService } from '../viaturas-form-page/viaturas.service';
+import { ViaturaService } from '../services/viaturas.service';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
@@ -35,9 +35,11 @@ export class ViaturasPageComponent implements OnInit {
   ) {
     this.parametro = this.route.snapshot.paramMap.get('parametro');
   }
-  
+
   ngOnInit(): void {
-    this.viaturas = this.viaturaService.getViaturas();
+    this.viaturaService
+      .getViaturasFetch()
+      .then((response) => (this.viaturas = response));
   }
 
   onClickAdicionar() {

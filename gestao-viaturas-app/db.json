@@ -1,0 +1,60 @@
+{
+  "viaturas": [
+    {
+      "placa": "ABZ1234",
+      "ano": "2016",
+      "marca": "Chevrolet",
+      "modelo": "Celta",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "placa": "AZC1234",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Classic"
+    },
+    {
+      "id": 3,
+      "placa": "CZC1234",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Onix"
+    },
+    {
+      "id": 4,
+      "placa": "AZC1254",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Cruze"
+    },
+    {
+      "placa": "ABZ1234",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Celta",
+      "id": 5
+    },
+    {
+      "placa": "ABZ1234",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Celta",
+      "id": 6
+    },
+    {
+      "placa": "ABZ1234",
+      "ano": "2015",
+      "marca": "Chevrolet",
+      "modelo": "Celta",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "placa": "AZZ6666",
+      "ano": "2000",
+      "marca": "chevrolet",
+      "modelo": "celta"
+    }
+  ]
+}

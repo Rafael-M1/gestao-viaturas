@@ -2,11 +2,21 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
+import {
+  MatDatepicker,
+  MatDatepickerModule,
+} from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { BotaoComponenteComponent } from '../botao-componente/botao-componente.component';
-import {MatNativeDateModule} from '@angular/material/core';
-import { ViaturaService } from './viaturas.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ViaturaService } from '../services/viaturas.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarModule,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { Viatura } from '../model/viatura';
 
 @Component({
   selector: 'app-viaturas-form-page',
@@ -19,24 +29,29 @@ import { ViaturaService } from './viaturas.service';
     MatInputModule,
     BotaoComponenteComponent,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule,
+    MatSnackBarModule,
   ],
 })
 export class ViaturasFormPageComponent {
-  @ViewChild('picker', { static: false })
-  private picker!: MatDatepicker<Date>;  
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
   viatura = {
+    id: null,
     placa: '',
     ano: '',
     marca: '',
     modelo: '',
   };
 
-  constructor(private router: Router, private viaturaService: ViaturaService) {}
+  constructor(private router: Router, private viaturaService: ViaturaService, private _snackBar: MatSnackBar) {}
 
   onClickSalvar() {
-    this.viaturaService.save(this.viatura);
+    this.viaturaService
+      .postViaturaFetch(this.viatura)
+      .then((response) => this.openSnackBar(response));
     this.router.navigate(['/viaturas']);
+    
   }
 
   onClickCancelar() {
@@ -47,9 +62,17 @@ export class ViaturasFormPageComponent {
     this.viatura.placa = event.target.value.toUpperCase();
   }
 
-  removerLetras(event:any) {
+  removerLetras(event: any) {
     //Transforma todos não numeros em ""
-    let novoValor = event.target.value.replace(/[^0-9]/g, "");
+    let novoValor = event.target.value.replace(/[^0-9]/g, '');
     this.viatura.ano = novoValor;
+  }
+
+  openSnackBar(viaturaResponse: Viatura) {
+    this._snackBar.open(`Viatura ${viaturaResponse.placa} cadastrada com sucesso!`, '', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 }

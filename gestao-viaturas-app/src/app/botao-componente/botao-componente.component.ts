@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
-import { ThemeService } from '../theme.service';
+import { ThemeService } from '../services/theme.service';
 import { Subscription } from 'rxjs';
 
 @Component({
