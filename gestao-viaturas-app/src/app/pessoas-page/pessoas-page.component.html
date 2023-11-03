@@ -1,6 +1,33 @@
-<div style="height: 100%">
-  <h2>Título da Página Pessoas</h2>
-  <p>Conteudo da Página Pessoas</p>
-  <app-botao-componente rotulo="Salvar" (botaoClicado)="onClickBotaoSalvar()"></app-botao-componente>
-  <app-botao-componente rotulo="Teste" color="secondary" (botaoClicado)="onClickBotaoTeste()"></app-botao-componente>
+<div style="height: 100%; padding: 20px">
+  <h2>Pessoas</h2>
+  <div style="margin-top: 50px; display: flex; justify-content: flex-end">
+    <app-botao-componente
+      #botao
+      rotulo="Adicionar Pessoa"
+      (click)="onClickAdicionar()"
+    ></app-botao-componente>
+  </div>
+
+  <table 
+    *ngIf="pessoas && pessoas!.length > 0" 
+    style="margin-top: 10px;"
+  >
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Data de Nascimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of pessoas">
+        <td>{{ pessoa.nome }}</td>
+        <td>{{ pessoa.email }}</td>
+        <td>{{ pessoa.dataNascimento | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!pessoas || pessoas!.length == 0">
+    <span>Não há pessoas cadastradas.</span>
+  </div>
 </div>

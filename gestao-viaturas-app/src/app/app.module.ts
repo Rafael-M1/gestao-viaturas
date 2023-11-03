@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -15,10 +15,14 @@ import { UtilizacaoviaturasPageComponent } from './utilizacaoviaturas-page/utili
 import { ViaturasFormPageComponent } from './viaturas-form-page/viaturas-form-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { PessoasFormPageComponent } from './pessoas-form-page/pessoas-form-page.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, HomepageComponent],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+  ],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
@@ -34,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     ViaturasFormPageComponent,
     MatFormFieldModule,
     HttpClientModule,
+    PessoasFormPageComponent,
   ],
 })
 export class AppModule {}

@@ -56,5 +56,19 @@
       "marca": "chevrolet",
       "modelo": "celta"
     }
+  ],
+  "pessoas": [
+    {
+      "id": 1,
+      "nome": "Rafael",
+      "email": "rafael@gmail.com",
+      "dataNascimento": "2023-11-31T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "nome": "João",
+      "email": "joao@gmail.com",
+      "dataNascimento": "2023-11-01T04:00:00.000Z"
+    }
   ]
 }
