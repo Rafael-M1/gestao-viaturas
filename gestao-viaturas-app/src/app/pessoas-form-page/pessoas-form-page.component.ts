@@ -46,6 +46,16 @@ export class PessoasFormPageComponent {
   ) {}
 
   onClickSalvar() {
+    const validacao: boolean = this.validarPessoaForm(this.pessoa);
+    if (validacao) {
+      return;
+    }
+    this.pessoa = {
+      id: null,
+      nome: this.pessoa.nome.trim(),
+      email: this.pessoa.email.trim().toLowerCase(),
+      dataNascimento: this.pessoa.dataNascimento,
+    };
     this.pessoaService.postPessoa(this.pessoa).subscribe({
       next: (response: Pessoa) => {
         this.openSnackBar(`Pessoa ${response.nome} cadastrada com sucesso!`);
@@ -69,6 +79,29 @@ export class PessoasFormPageComponent {
   onClickCancelar() {
     this.router.navigate(['/pessoas']);
   }
-}
 
-// https://stackoverflow.com/questions/55752234/how-to-validate-email-address-from-a-mat-inputangular-material
+  validarPessoaForm(pessoa: Pessoa): boolean {
+    //Verifica se nome da pessoa tem pelo menos 3 caracteres
+    if (pessoa.nome.trim().length < 3) {
+      this.openSnackBar(`Nome da Pessoa deve ter pelo menos três caracteres não vazios.`);
+      return true;
+    }
+    //Verifica se email da pessoa é valido
+    if (!/^[a-zA-Z0-9.-_]+@[a-zA-Z]+(\.[a-zA-Z]{2,})+$/.test(pessoa.email)) {
+      this.openSnackBar(`Formato inválido do e-mail da Pessoa.`);
+      return true;
+    }
+    //Verifica se pessoa é maior de 18 anos
+    let dataAtual = new Date();
+    let milissegundosEmUmAno = 1000 * 60 * 60 * 24 * 365.25;
+    let idade =
+      (dataAtual.getTime() - this.pessoa.dataNascimento.getTime()) /
+      milissegundosEmUmAno;
+
+    if (idade < 18) {
+      this.openSnackBar(`A Pessoa deve ser maior de 18 anos.`);
+      return true;
+    }
+    return false;
+  }
+}

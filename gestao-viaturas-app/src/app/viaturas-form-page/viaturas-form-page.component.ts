@@ -51,6 +51,13 @@ export class ViaturasFormPageComponent {
   ) {}
 
   onClickSalvar() {
+    const validacao: boolean = this.validarViaturaForm(this.viatura);
+    if (validacao) {
+      return;
+    }
+
+    this.viatura.marca = this.viatura.marca.trim();
+    this.viatura.modelo = this.viatura.modelo.trim();
     this.viaturaService
       .postViaturaFetch(this.viatura)
       .then((response) => {
@@ -67,14 +74,10 @@ export class ViaturasFormPageComponent {
     this.router.navigate(['/viaturas']);
   }
 
-  transformarEmMaiusculo(event: any) {
-    this.viatura.placa = event.target.value.toUpperCase();
-  }
-
   removerLetras(event: any) {
     //Transforma todos não numeros em ""
-    let novoValor = event.target.value.replace(/[^0-9]/g, '');
-    this.viatura.ano = novoValor;
+    event.target.value = event.target.value.replace(/[^0-9]/g, '');
+    this.viatura.ano = event.target.value;
   }
 
   openSnackBar(message: string) {
@@ -83,5 +86,28 @@ export class ViaturasFormPageComponent {
       verticalPosition: this.verticalPosition,
       duration: 4000,
     });
+  }
+
+  validarViaturaForm(viatura: Viatura): boolean {
+    //Verifica se nome da pessoa tem pelo menos 3 caracteres
+    if (+viatura.ano.trim() < 2000 || +viatura.ano.trim() > new Date().getFullYear()) {
+      this.openSnackBar(`Ano da viatura deve ser entre 2000 e 2023.`);
+      return true;
+    }
+    //Verifica se placa da viatura é valida
+    if (!/[a-zA-Z]{3}[0-9][0-9a-zA-Z][0-9]{2}|[a-zA-Z]{3}[0-9]{4}/.test(viatura.placa)) {
+      this.openSnackBar(`Formato inválido da Placa da Viatura.`);
+      return true;
+    }
+
+    if (viatura.marca.trim().length < 2) {
+      this.openSnackBar(`Tamanho mínimo da Marca de 2 caracteres não vazios.`);
+      return true;
+    }
+    if (viatura.modelo.trim().length < 2) {
+      this.openSnackBar(`Tamanho mínimo do Modelo de 2 caracteres não vazios.`);
+      return true;
+    }
+    return false;
   }
 }

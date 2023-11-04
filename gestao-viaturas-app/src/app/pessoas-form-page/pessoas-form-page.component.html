@@ -3,7 +3,7 @@
 
   <form #form="ngForm" (ngSubmit)="onClickSalvar()">
     <div style="display: flex; flex-direction: column; margin-top: 20px">
-      <mat-form-field style="max-width: 300px">
+      <mat-form-field style="max-width: 400px">
         <mat-label>Nome</mat-label>
         <input
           matInput
@@ -12,8 +12,9 @@
           name="nome"
           [(ngModel)]="pessoa.nome"
           required
+          minlength="3"
         />
-        <mat-error>O campo Nome é obrigatório.</mat-error>
+        <mat-error>O campo Nome é obrigatório e pelo menos 3 caracteres.</mat-error>
       </mat-form-field>
       <mat-form-field style="max-width: 400px">
         <mat-label>E-mail</mat-label>
@@ -24,7 +25,8 @@
           name="email"
           [(ngModel)]="pessoa.email"
           required
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          pattern="[a-zA-Z0-9.-_]+@[a-zA-Z]+(\.[a-zA-Z]{2,})+"
+          style="text-transform: lowercase;"
         />
         <mat-error>O campo E-mail é obrigatório ou formato de e-mail inválido.</mat-error>
       </mat-form-field>

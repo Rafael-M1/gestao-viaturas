@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { BotaoComponenteComponent } from "../botao-componente/botao-componente.component";
 import { ThemeService } from '../services/theme.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
     selector: 'app-sidebar-componente',
@@ -24,7 +25,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
         MatListModule,
         NgFor,
         RouterModule,
-        BotaoComponenteComponent
+        BotaoComponenteComponent,
+        FooterComponent
     ]
 })
 export class SidebarComponenteComponent implements OnInit, OnDestroy {

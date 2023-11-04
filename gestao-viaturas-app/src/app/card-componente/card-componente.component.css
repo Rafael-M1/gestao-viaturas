@@ -1,5 +1,5 @@
 .card-container {
-	height: calc(100vh - 84px);
+	height: calc(100vh - 84px - 32px);
 	margin-left: 40px;
 	margin-right: 40px;
 	margin-top: 10px;

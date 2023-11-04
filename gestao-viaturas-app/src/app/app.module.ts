@@ -17,9 +17,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { PessoasFormPageComponent } from './pessoas-form-page/pessoas-form-page.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent],
+  declarations: [AppComponent, HomepageComponent,],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
@@ -39,6 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatFormFieldModule,
     HttpClientModule,
     PessoasFormPageComponent,
+    FooterComponent,
   ],
 })
 export class AppModule {}
