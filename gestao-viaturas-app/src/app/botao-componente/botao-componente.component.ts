@@ -13,9 +13,10 @@ import { Subscription } from 'rxjs';
   imports: [MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class BotaoComponenteComponent implements OnInit, OnDestroy {
+  //Property Binding
   @Input() rotulo: string = "Botão";
   @Input() color: string = "primary";
-  @Input() tipo: string = 'button';
+  @Input() tipo: string = 'button'; //button, submit
   @Input() desabilitado!: boolean;
   @Output() botaoClicado = new EventEmitter<void>();
   currentTheme!: string;
@@ -38,7 +39,7 @@ export class BotaoComponenteComponent implements OnInit, OnDestroy {
       this.themeSubscription.unsubscribe();
     }
   }
-
+  //Event Binding
   onClickBotao() {
     this.botaoClicado.emit();
   }
