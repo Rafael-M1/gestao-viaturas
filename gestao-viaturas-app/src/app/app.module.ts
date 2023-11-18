@@ -21,11 +21,18 @@ import { FooterComponent } from './footer/footer.component';
 import { UtilizacaoviaturasFormPageComponent } from './utilizacaoviaturas-form-page/utilizacaoviaturas-form-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent],
+  declarations: [AppComponent, HomepageComponent, ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -45,6 +52,8 @@ import { MatSelectModule } from '@angular/material/select';
     UtilizacaoviaturasFormPageComponent,
     MatInputModule,
     MatSelectModule,
+    ConfirmDialogComponent,
+    MatDialogModule,
   ],
 })
 export class AppModule {}
