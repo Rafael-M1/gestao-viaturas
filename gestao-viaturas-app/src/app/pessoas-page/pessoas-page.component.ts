@@ -75,6 +75,9 @@ export class PessoasPageComponent implements OnInit {
       }
     );
   }
+  onClickEditar(pessoa: Pessoa): void {
+    this.router.navigate(['/pessoas', 'form', pessoa.id]);
+  }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {

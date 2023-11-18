@@ -26,10 +26,16 @@
         <td>{{ pessoa.email }}</td>
         <td>{{ pessoa.dataNascimento | date:'dd/MM/yyyy' : 'UTC' }}</td>
         <td>
-          <app-botao-componente
-            rotulo="Excluir"
-            (click)="onClickExcluir(pessoa.id!)"
-          ></app-botao-componente>
+          <div style="display: flex; column-gap: 10px;">
+            <app-botao-componente
+              rotulo="Excluir"
+              (click)="onClickExcluir(pessoa.id!)"
+            ></app-botao-componente>
+            <app-botao-componente
+              rotulo="Editar"
+              (click)="onClickEditar(pessoa)"
+            ></app-botao-componente>
+          </div>
         </td>
       </tr>
     </tbody>

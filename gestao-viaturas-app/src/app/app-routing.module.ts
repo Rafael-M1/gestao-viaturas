@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'viaturas/:parametro', component: ViaturasPageComponent },
       { path: 'pessoas', component: PessoasPageComponent },
       { path: 'pessoas/form', component: PessoasFormPageComponent },
+      { path: 'pessoas/form/:id', component: PessoasFormPageComponent },
       { path: 'utilizacaoviaturas', component: UtilizacaoviaturasPageComponent },
       { path: 'utilizacaoviaturas/form', component: UtilizacaoviaturasFormPageComponent },
     ],
