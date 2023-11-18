@@ -87,7 +87,7 @@ export class ViaturasFormPageComponent implements OnInit {
         marca: this.viatura.marca.trim(),
         modelo: this.viatura.modelo.trim(),
         ano: this.viatura.ano,
-        placa: this.viatura.placa,
+        placa: this.viatura.placa.toUpperCase(),
       };
       this.viaturaService
         .updateViaturaFetch(this.viatura)
@@ -105,7 +105,7 @@ export class ViaturasFormPageComponent implements OnInit {
         marca: this.viatura.marca.trim(),
         modelo: this.viatura.modelo.trim(),
         ano: this.viatura.ano,
-        placa: this.viatura.placa,
+        placa: this.viatura.placa.toUpperCase(),
       };
       this.viaturaService
         .postViaturaFetch(this.viatura)

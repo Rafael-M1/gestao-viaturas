@@ -1,60 +1,18 @@
 {
   "viaturas": [
     {
-      "placa": "ABZ1234",
-      "ano": "2016",
+      "id": 1,
       "marca": "Chevrolet",
       "modelo": "Celta",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "placa": "AZC1234",
-      "ano": "2015",
-      "marca": "Chevrolet",
-      "modelo": "Classic"
-    },
-    {
-      "id": 3,
-      "placa": "CZC1234",
-      "ano": "2015",
-      "marca": "Chevrolet",
-      "modelo": "Onix"
+      "ano": "2020",
+      "placa": "AZZ1245"
     },
     {
       "id": 4,
-      "placa": "AZC1254",
-      "ano": "2015",
-      "marca": "Chevrolet",
-      "modelo": "Cruze"
-    },
-    {
-      "placa": "ABZ1234",
-      "ano": "2015",
       "marca": "Chevrolet",
       "modelo": "Celta",
-      "id": 5
-    },
-    {
-      "placa": "ABZ1234",
-      "ano": "2015",
-      "marca": "Chevrolet",
-      "modelo": "Celta",
-      "id": 6
-    },
-    {
-      "placa": "ABZ1234",
-      "ano": "2015",
-      "marca": "Chevrolet",
-      "modelo": "Celta",
-      "id": 7
-    },
-    {
-      "id": 8,
-      "placa": "AZZ6666",
-      "ano": "2000",
-      "marca": "chevrolet",
-      "modelo": "celta"
+      "ano": "2019",
+      "placa": "AUS1234"
     }
   ],
   "pessoas": [
@@ -74,17 +32,17 @@
   "utilizacaoViaturas": [
     {
       "id": 1,
-      "pessoasId": 2,
-      "viaturasId": 1,
-      "dataInicio": "2023-11-16T00:00:00.000Z",
-      "dataFim": "2023-11-17T00:00:00.000Z"
+      "pessoasId": "1",
+      "viaturasId": "1",
+      "dataInicio": "2023-11-08T00:00:00.000Z",
+      "dataFim": "2023-11-24T00:00:00.000Z"
     },
     {
       "id": 2,
-      "pessoasId": "1",
-      "viaturasId": "1",
-      "dataInicio": "2023-11-17T00:00:00.000Z",
-      "dataFim": "2023-11-18T00:00:00.000Z"
+      "pessoasId": "2",
+      "viaturasId": "4",
+      "dataInicio": "2023-11-28T00:00:00.000Z",
+      "dataFim": "2023-11-30T00:00:00.000Z"
     }
   ]
 }
