@@ -70,5 +70,21 @@
       "email": "joao@gmail.com",
       "dataNascimento": "2000-11-05T00:00:00.000Z"
     }
+  ],
+  "utilizacaoViaturas": [
+    {
+      "id": 1,
+      "pessoasId": 2,
+      "viaturasId": 1,
+      "dataInicio": "2023-11-16T00:00:00.000Z",
+      "dataFim": "2023-11-17T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "pessoasId": "1",
+      "viaturasId": "1",
+      "dataInicio": "2023-11-17T00:00:00.000Z",
+      "dataFim": "2023-11-18T00:00:00.000Z"
+    }
   ]
 }

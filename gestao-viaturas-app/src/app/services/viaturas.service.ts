@@ -36,7 +36,7 @@ export class ViaturaService {
   }
 
   async updateViaturaFetch(viatura: Viatura): Promise<Viatura> {
-    const response = await fetch(`${this.BASE_URL}/${viatura.id}`, {
+    const response = await fetch(`${this.BASE_URL}/viaturas/${viatura.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

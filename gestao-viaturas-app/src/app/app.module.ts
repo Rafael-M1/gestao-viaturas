@@ -18,12 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { PessoasFormPageComponent } from './pessoas-form-page/pessoas-form-page.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FooterComponent } from './footer/footer.component';
+import { UtilizacaoviaturasFormPageComponent } from './utilizacaoviaturas-form-page/utilizacaoviaturas-form-page.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent,],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
-  ],
+  declarations: [AppComponent, HomepageComponent],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
@@ -41,6 +42,9 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     PessoasFormPageComponent,
     FooterComponent,
+    UtilizacaoviaturasFormPageComponent,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class AppModule {}

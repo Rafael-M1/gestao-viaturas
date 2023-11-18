@@ -7,6 +7,7 @@ import { PessoasPageComponent } from './pessoas-page/pessoas-page.component';
 import { UtilizacaoviaturasPageComponent } from './utilizacaoviaturas-page/utilizacaoviaturas-page.component';
 import { ViaturasFormPageComponent } from './viaturas-form-page/viaturas-form-page.component';
 import { PessoasFormPageComponent } from './pessoas-form-page/pessoas-form-page.component';
+import { UtilizacaoviaturasFormPageComponent } from './utilizacaoviaturas-form-page/utilizacaoviaturas-form-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'pessoas', component: PessoasPageComponent },
       { path: 'pessoas/form', component: PessoasFormPageComponent },
       { path: 'utilizacaoviaturas', component: UtilizacaoviaturasPageComponent },
+      { path: 'utilizacaoviaturas/form', component: UtilizacaoviaturasFormPageComponent },
     ],
   },
 ];
