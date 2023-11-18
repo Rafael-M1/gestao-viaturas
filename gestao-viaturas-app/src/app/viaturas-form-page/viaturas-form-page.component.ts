@@ -56,16 +56,22 @@ export class ViaturasFormPageComponent implements OnInit {
     this.route.params.subscribe((params) => {
       if ('id' in params) {
         this.id = +params['id']; //converte o parâmetro para número
-        this.viaturaService.getViaturaByIdFetch(this.id).then(
-          (response: Viatura) =>
-            (this.viatura = {
+        this.viaturaService
+          .getViaturaByIdFetch(this.id)
+          .then((response: Viatura) => {
+            if (JSON.stringify(response) === '{}') {
+              this.openSnackBar(`Erro ao buscar Viatura de id ${this.id}.`);
+              this.router.navigate(['/viaturas']);
+              return;
+            }
+            this.viatura = {
               id: this.id !== undefined ? this.id : 0,
               ano: response.ano,
               marca: response.marca,
               modelo: response.modelo,
               placa: response.placa,
-            })
-        );
+            };
+          });
       }
     });
   }

@@ -60,7 +60,14 @@ export class PessoasFormPageComponent implements OnInit {
               email: response.email,
               nome: response.nome,
             };
-          });
+          },
+          (error: any) => {
+            if (error.status == 404) {
+              this.openSnackBar(`Erro ao buscar Pessoa de id ${this.id}.`);
+              this.router.navigate(['/pessoas']);
+            }
+          }
+          );
       }
     });
   }
