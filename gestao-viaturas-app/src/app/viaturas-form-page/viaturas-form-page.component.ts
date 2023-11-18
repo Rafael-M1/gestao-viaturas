@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {
@@ -33,41 +33,87 @@ import { Viatura } from '../model/viatura';
     MatSnackBarModule,
   ],
 })
-export class ViaturasFormPageComponent {
+export class ViaturasFormPageComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  viatura = {
+  viatura: Viatura = {
     id: null,
     placa: '',
     ano: '',
     marca: '',
     modelo: '',
   };
-
+  id: number | undefined;
   constructor(
     private router: Router,
     private viaturaService: ViaturaService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
+    this.route.params.subscribe((params) => {
+      if ('id' in params) {
+        this.id = +params['id']; //converte o parâmetro para número
+        this.viaturaService.getViaturaByIdFetch(this.id).then(
+          (response: Viatura) =>
+            (this.viatura = {
+              id: this.id !== undefined ? this.id : 0,
+              ano: response.ano,
+              marca: response.marca,
+              modelo: response.modelo,
+              placa: response.placa,
+            })
+        );
+      }
+    });
+  }
 
   onClickSalvar() {
     const validacao: boolean = this.validarViaturaForm(this.viatura);
     if (validacao) {
       return;
     }
-
-    this.viatura.marca = this.viatura.marca.trim();
-    this.viatura.modelo = this.viatura.modelo.trim();
-    this.viaturaService
-      .postViaturaFetch(this.viatura)
-      .then((response) => {
-        this.openSnackBar(`Viatura ${response.placa} cadastrada com sucesso!`);
-        this.router.navigate(['/viaturas']);
-      })
-      .catch((error) => {
-        console.log(error);
-        this.openSnackBar('Erro ao cadastrar viatura.');
-      });
+    if (this.id && this.id > 0) {
+      this.viatura = {
+        id: this.viatura.id,
+        marca: this.viatura.marca.trim(),
+        modelo: this.viatura.modelo.trim(),
+        ano: this.viatura.ano,
+        placa: this.viatura.placa,
+      };
+      this.viaturaService
+        .updateViaturaFetch(this.viatura)
+        .then((response) => {
+          this.openSnackBar(`Viatura ${response.placa} alterada com sucesso!`);
+          this.router.navigate(['/viaturas']);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.openSnackBar('Erro ao alterar viatura.');
+        });
+    } else {
+      this.viatura = {
+        id: null,
+        marca: this.viatura.marca.trim(),
+        modelo: this.viatura.modelo.trim(),
+        ano: this.viatura.ano,
+        placa: this.viatura.placa,
+      };
+      this.viaturaService
+        .postViaturaFetch(this.viatura)
+        .then((response) => {
+          this.openSnackBar(
+            `Viatura ${response.placa} cadastrada com sucesso!`
+          );
+          this.router.navigate(['/viaturas']);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.openSnackBar('Erro ao cadastrar viatura.');
+        });
+    }
   }
 
   onClickCancelar() {
@@ -90,12 +136,19 @@ export class ViaturasFormPageComponent {
 
   validarViaturaForm(viatura: Viatura): boolean {
     //Verifica se nome da pessoa tem pelo menos 3 caracteres
-    if (+viatura.ano.trim() < 2000 || +viatura.ano.trim() > new Date().getFullYear()) {
+    if (
+      +viatura.ano.trim() < 2000 ||
+      +viatura.ano.trim() > new Date().getFullYear()
+    ) {
       this.openSnackBar(`Ano da viatura deve ser entre 2000 e 2023.`);
       return true;
     }
     //Verifica se placa da viatura é valida
-    if (!/[a-zA-Z]{3}[0-9][0-9a-zA-Z][0-9]{2}|[a-zA-Z]{3}[0-9]{4}/.test(viatura.placa)) {
+    if (
+      !/[a-zA-Z]{3}[0-9][0-9a-zA-Z][0-9]{2}|[a-zA-Z]{3}[0-9]{4}/.test(
+        viatura.placa
+      )
+    ) {
       this.openSnackBar(`Formato inválido da Placa da Viatura.`);
       return true;
     }

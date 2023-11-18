@@ -17,6 +17,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent },
       { path: 'viaturas', component: ViaturasPageComponent },
       { path: 'viaturas/form', component: ViaturasFormPageComponent },
+      { path: 'viaturas/form/:id', component: ViaturasFormPageComponent },
       { path: 'viaturas/:parametro', component: ViaturasPageComponent },
       { path: 'pessoas', component: PessoasPageComponent },
       { path: 'pessoas/form', component: PessoasFormPageComponent },
