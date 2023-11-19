@@ -1,0 +1,81 @@
+<div style="padding: 20px">
+  <h2>Cadastro Pessoa</h2>
+
+  <form #form="ngForm" (ngSubmit)="onClickSalvar()">
+    <div style="display: flex; flex-direction: column; margin-top: 20px">
+      <form>
+        <div style="padding: 10px 0px;">
+          <label for="pessoa">Pessoa:</label>
+          <select
+            id="pessoa"
+            [(ngModel)]="utilizacaoViatura.pessoasId"
+            name="pessoa"
+            style="padding: 8px; margin-right: 10px"
+            required
+          >
+            <option *ngFor="let pessoa of pessoas" [value]="pessoa.id">
+              {{ pessoa.nome }}
+            </option>
+          </select>
+        </div>
+        <div style="padding: 10px 0px;">
+          <label for="viatura">Viatura:</label>
+          <select
+            id="viatura"
+            [(ngModel)]="utilizacaoViatura.viaturasId"
+            name="viatura"
+            style="padding: 8px"
+            required
+          >
+            <option *ngFor="let viatura of viaturas" [value]="viatura.id">
+              Modelo: {{ viatura.modelo }} - Placa: {{ viatura.placa }}
+            </option>
+          </select>
+        </div>
+        <div style="padding: 10px 0px;">
+          <label for="dataInicio">Data de Início:</label>
+          <input
+            type="date"
+            id="dataInicio"
+            [(ngModel)]="dataInicioSelecionada"
+            name="dataInicio"
+            style="padding: 8px; margin-right: 10px"
+            required
+          />
+        </div>
+        <div style="padding: 10px 0px;">
+          <label for="dataFim">Data de Fim:</label>
+          <input
+            type="date"
+            id="dataFim"
+            [(ngModel)]="dataFimSelecionada"
+            name="dataFim"
+            style="padding: 8px; margin-right: 10px"
+            required
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      style="
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-end;
+        max-width: 700px;
+      "
+    >
+      <div style="display: flex; column-gap: 20px">
+        <app-botao-componente
+          rotulo="Cancelar"
+          color="secondary"
+          (click)="onClickCancelar()"
+        ></app-botao-componente>
+        <app-botao-componente
+          rotulo="Salvar"
+          [tipo]="'submit'"
+          [desabilitado]="!form.valid"
+        ></app-botao-componente>
+      </div>
+    </div>
+  </form>
+</div>

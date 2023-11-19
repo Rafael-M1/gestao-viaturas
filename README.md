@@ -2,6 +2,9 @@
 ## Link do Protótipo no Figma
 https://www.figma.com/file/erIN8GMZejky1QmcabZSHn/App-Gest%C3%A3o-de-Viaturas
 
+## Link do Deploy no Github Pages
+https://rafael-m1.github.io/gestao-viaturas/
+
 ## Checklist
 
 - [ ] Criar um repositório no GitHub com a estrutura do Gitflow, incluindo pelo menos as branches principais "main" e "develop."

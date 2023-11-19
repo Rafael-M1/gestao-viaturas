@@ -1,0 +1,18 @@
+<div
+  style="
+    height: 120px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div mat-dialog-content>
+    <p>Deseja realmente excluir o registro?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onClickCancelar()">Cancelar</button>
+    <button mat-button (click)="onClickConfirmar()">Confirmar</button>
+  </div>
+</div>

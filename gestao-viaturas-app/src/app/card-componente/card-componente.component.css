@@ -1,0 +1,14 @@
+.card-container {
+	height: calc(100vh - 84px - 32px);
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	@media (max-width: 600px) {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+}

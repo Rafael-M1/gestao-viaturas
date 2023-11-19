@@ -1,0 +1,78 @@
+<div style="padding: 20px">
+  <h2>Cadastro Pessoa</h2>
+
+  <form #form="ngForm" (ngSubmit)="onClickSalvar()">
+    <div style="display: flex; flex-direction: column; margin-top: 20px">
+      <mat-form-field style="max-width: 400px">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          type="text"
+          id="nome"
+          name="nome"
+          [(ngModel)]="pessoa.nome"
+          required
+          minlength="3"
+        />
+        <mat-error
+          >O campo Nome é obrigatório e pelo menos 3 caracteres.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field style="max-width: 400px">
+        <mat-label>E-mail</mat-label>
+        <input
+          matInput
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="pessoa.email"
+          required
+          pattern="[a-zA-Z0-9.-_]+@[a-zA-Z]+(\.[a-zA-Z]{2,})+"
+          style="text-transform: lowercase"
+        />
+        <mat-error
+          >O campo E-mail é obrigatório ou formato de e-mail
+          inválido.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field style="max-width: 300px">
+        <mat-label>Data de Nascimento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          name="dataNascimento"
+          [(ngModel)]="pessoa.dataNascimento"
+          required
+          readonly
+        />
+        <mat-error>O campo Data de Nascimento é obrigatório.</mat-error>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div
+      style="
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-end;
+        max-width: 700px;
+      "
+    >
+      <div style="display: flex; column-gap: 20px">
+        <app-botao-componente
+          rotulo="Cancelar"
+          color="secondary"
+          (botaoClicado)="onClickCancelar()"
+        ></app-botao-componente>
+        <app-botao-componente
+          rotulo="Salvar"
+          [tipo]="'submit'"
+          [desabilitado]="!form.valid"
+        ></app-botao-componente>
+      </div>
+    </div>
+  </form>
+</div>

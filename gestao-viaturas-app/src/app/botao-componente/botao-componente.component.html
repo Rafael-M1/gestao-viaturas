@@ -1,0 +1,12 @@
+<button
+  mat-raised-button
+  [color]="color"
+  (click)="onClickBotao()"
+  [attr.type]="tipo"
+  [disabled]="desabilitado ? 'true' : null"
+  [style.background-color]= "currentTheme == 'black' ? desabilitado == true ? 'grey' : currentTheme : ''"
+  [style.color]="currentTheme == 'black' ? 'white' : ''"
+>
+<!-- Interpolation -->
+  {{ rotulo }}
+</button>

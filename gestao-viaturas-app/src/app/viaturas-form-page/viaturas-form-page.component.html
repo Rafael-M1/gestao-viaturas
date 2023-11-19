@@ -1,0 +1,81 @@
+<div style="padding: 20px">
+  <h2>Cadastro Viatura</h2>
+
+  <form #form="ngForm" (ngSubmit)="onClickSalvar()">
+    
+    <div style="display: flex; flex-direction: column; margin-top: 20px">
+      <mat-form-field style="max-width: 300px" >
+        <mat-label>Placa</mat-label>
+        <input
+          matInput
+          type="text"
+          id="placa"
+          name="placa"
+          [(ngModel)]="this.viatura.placa"
+          required
+          pattern="[a-zA-Z]{3}[0-9][0-9a-zA-Z][0-9]{2}|[a-zA-Z]{3}[0-9]{4}"
+          maxlength="7"
+          style="text-transform: uppercase;"
+        />
+        <mat-error >Formato placa: ABC1234 ou ABC1D34.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field style="max-width: 300px">
+        <mat-label>Ano</mat-label>
+        <input
+          matInput
+          type="text"
+          id="ano"
+          name="ano"
+          [(ngModel)]="this.viatura.ano"
+          required
+          pattern="^\d{4}$"
+          minlength="4"
+          maxlength="4"
+          (input)="removerLetras($event)"
+        />
+        <mat-error >Ano: entre 2000 e 2023.</mat-error>
+      </mat-form-field>
+      <mat-form-field style="max-width: 500px">
+        <mat-label>Marca</mat-label>
+        <input
+          matInput
+          type="text"
+          id="marca"
+          name="marca"
+          [(ngModel)]="this.viatura.marca"
+          required
+          minlength="2"
+        />
+        <mat-error >Tamanho mínimo da Marca de 2 caracteres.</mat-error>
+      </mat-form-field>
+      <mat-form-field style="max-width: 500px">
+        <mat-label>Modelo</mat-label>
+        <input
+          matInput
+          type="text"
+          id="modelo"
+          name="modelo"
+          [(ngModel)]="this.viatura.modelo"
+          required
+          minlength="2"
+        />
+        <mat-error >Tamanho mínimo do Modelo de 2 caracteres.</mat-error>
+      </mat-form-field>
+    </div>
+    <div style="margin-top: 50px; display: flex; justify-content: flex-end; max-width: 700px">
+      <div style="display: flex; column-gap: 20px">
+        <app-botao-componente
+          rotulo="Cancelar"
+          color="secondary"
+          (click)="onClickCancelar()"
+        ></app-botao-componente>
+        <app-botao-componente
+          rotulo="Salvar"
+          [tipo]="'submit'"
+          [desabilitado]="!form.valid"
+        ></app-botao-componente>
+      </div>
+    </div>
+  </form>
+</div>

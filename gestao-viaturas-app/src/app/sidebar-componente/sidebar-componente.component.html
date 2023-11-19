@@ -1,0 +1,62 @@
+<!-- Cabeçalho e Sidebar -->
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar
+    color="primary"
+    class="example-toolbar"
+    [style.background-color]="currentTheme == 'black' ? currentTheme : ''"
+  >
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <h1
+        class="example-app-name"
+        [textContent]="
+          mobileQuery.matches
+            ? 'Gestão de Viaturas'
+            : 'Sistema de Gestão de Viaturas'
+        "
+      >
+        Sistema de Gestão de Viaturas
+      </h1>
+      <div [ngClass]="mobileQuery.matches ? 'ocultar-em-tela-pequena' : ''">
+        <app-botao-componente
+          rotulo="Alterar tema"
+          (botaoClicado)="onClickBotaoAlterarTema()"
+        ></app-botao-componente>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
+      <mat-nav-list>
+        <a
+          routerLink="/"
+          style="height: 150px; display: flex; flex-direction: column"
+        >
+          <img src="assets/IMG-Carro.svg" alt="Logo sistema" />
+          <h4 style="text-align: center; text-decoration: none; color: black">
+            <b>Gestão de Viaturas</b>
+          </h4>
+        </a>
+        <hr style="margin-top: 40px" />
+        <a
+          mat-list-item
+          [routerLink]="[nav.path]"
+          *ngFor="let nav of fillerNav"
+          >{{ nav.label }}</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div>
+        <!-- Conteudo -->
+        <router-outlet></router-outlet>
+      </div>
+      <!-- Rodapé -->
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
