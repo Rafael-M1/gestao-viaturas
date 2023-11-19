@@ -13,7 +13,6 @@ import { Subscription } from 'rxjs';
   imports: [MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class BotaoComponenteComponent implements OnInit, OnDestroy {
-  //Property Binding
   @Input() rotulo: string = "Botão";
   @Input() color: string = "primary";
   @Input() tipo: string = 'button'; //button, submit
@@ -25,10 +24,6 @@ export class BotaoComponenteComponent implements OnInit, OnDestroy {
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    const temaAtualStorage = localStorage.getItem('currentTheme');
-    if (temaAtualStorage) {
-      this.themeService.setTheme(temaAtualStorage);
-    }
     this.themeSubscription = this.themeService.currentTheme$.subscribe((theme) => {
       this.currentTheme = theme;
     });

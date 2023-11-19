@@ -48,7 +48,11 @@ export class ViaturasPageComponent implements OnInit {
   ngOnInit(): void {
     this.viaturaService
       .getViaturasFetch()
-      .then((response: Viatura[]) => (this.viaturas = response));
+      .then((response: Viatura[]) => (this.viaturas = response))
+      .catch((error) => {
+        console.error('Erro ao buscar dados das Viaturas:', error);
+        this.openSnackBar('Erro ao buscar dados das Viaturas.');
+      });
   }
 
   onClickAdicionar() {

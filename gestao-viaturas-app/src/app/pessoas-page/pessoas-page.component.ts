@@ -52,6 +52,10 @@ export class PessoasPageComponent implements OnInit {
   ngOnInit(): void {
     this.pessoaService.getPessoas().subscribe((response: Pessoa[]) => {
       this.pessoas = response;
+    },
+    (error) => {
+      console.error('Erro ao buscar dados das Pessoas:', error);
+      this.openSnackBar('Erro ao buscar dados das Pessoas.');
     });
   }
 

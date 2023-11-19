@@ -11,6 +11,7 @@ import { BotaoComponenteComponent } from "../botao-componente/botao-componente.c
 import { ThemeService } from '../services/theme.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { FooterComponent } from "../footer/footer.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-sidebar-componente',
@@ -26,7 +27,8 @@ import { FooterComponent } from "../footer/footer.component";
         NgFor,
         RouterModule,
         BotaoComponenteComponent,
-        FooterComponent
+        FooterComponent,
+        CommonModule,
     ]
 })
 export class SidebarComponenteComponent implements OnInit, OnDestroy {
